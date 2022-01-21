@@ -1,3 +1,4 @@
+from hashlib import new
 from django.shortcuts import render, redirect
 from .forms import AddWidgetForm
 from .models import *
@@ -10,9 +11,8 @@ def index(request):
 
 def add_widget(request):
     form = AddWidgetForm(request.POST)
-
+    print(request.POST)
     if form.is_valid():
-        new_widget = form.save(commit=False)
-        new_widget.widget_id 
-
+        new_widget = form.save()    
+        
     return redirect('index')
