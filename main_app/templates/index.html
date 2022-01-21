@@ -11,16 +11,30 @@
             text-align: center;
             margin: 2rem;
         }
+        label {
+            display: inline-block;
+            width: 100px;
+            text-align: right;
+        }
     </style>
 </head>
 <body>
     <h1>Wacky Widgets</h1>
     <hr>
-    <hr>
-    {% for item in item_list %}
-
+    {% for widget in widgets %}
+        {{ widget.description }}
+        {{ widget.quantity }}
     {% empty %}
         <h3>No Widgets Exist</h3>
     {% endfor %}
+    <hr>
+    <h4>Add Widget</h4>
+
+    <form class="pure-form" action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="pure-button" type="submit">ADD WIDGET</button>
+    </form>
+
 </body>
 </html>
