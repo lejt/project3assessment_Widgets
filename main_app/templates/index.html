@@ -30,28 +30,30 @@
 <body>
     <h1>Wacky Widgets</h1>
     <hr>
-    {% for widget in widgets %}
-        <table class="pure-table">
-            <thead>
-                <tr>
-                    <th>Description</th>
-                    <th>Quantity</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{{ widget.description }}</td>
-                    <td>{{ widget.quantity }}</td>
-                    <td>
-                        <a href="{% url 'delete_widget' widget.id %}">X</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    {% empty %}
+    {% if widgets.count > 0 %}
+    <table class="pure-table">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody class="pure-table-striped">
+            {% for widget in widgets %}
+            <tr>
+                <td>{{ widget.description }}</td>
+                <td>{{ widget.quantity }}</td>
+                <td>
+                    <a href="{% url 'delete_widget' widget.id %}">X</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
         <h3>No Widgets Exist</h3>
-    {% endfor %}
+    {% endif %}
     <hr>
     <h4>Add Widget</h4>
 
