@@ -11,8 +11,12 @@ def index(request):
 
 def add_widget(request):
     form = AddWidgetForm(request.POST)
-    print(request.POST)
     if form.is_valid():
         new_widget = form.save()    
         
+    return redirect('index')
+
+def delete_widget(request, widget_id):
+    widget = Widget.objects.get(id=widget_id)
+    widget.delete()
     return redirect('index')

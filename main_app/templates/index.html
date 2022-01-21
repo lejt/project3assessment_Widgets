@@ -30,9 +30,8 @@
 <body>
     <h1>Wacky Widgets</h1>
     <hr>
-    {{ widgets }}
     {% for widget in widgets %}
-        <table>
+        <table class="pure-table">
             <thead>
                 <tr>
                     <th>Description</th>
@@ -44,7 +43,9 @@
                 <tr>
                     <td>{{ widget.description }}</td>
                     <td>{{ widget.quantity }}</td>
-                    <td><a href="#">X</a></td>
+                    <td>
+                        <a href="{% url 'delete_widget' widget.id %}">X</a>
+                    </td>
                 </tr>
             </tbody>
         </table>
