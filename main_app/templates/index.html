@@ -15,5 +15,12 @@
 </head>
 <body>
     <h1>Wacky Widgets</h1>
+    <hr>
+    <hr>
+    {% for item in item_list %}
+
+    {% empty %}
+        <h3>No Widgets Exist</h3>
+    {% endfor %}
 </body>
 </html>
